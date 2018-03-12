@@ -110,9 +110,9 @@ open class SpeechKitManager:NSObject {
     }
     
     open func stop(){
+        audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
         audioEngine.inputNode.removeTap(onBus: 0)
-        
         recognitionBufferRequest = nil
         recognitionTask = nil
     }

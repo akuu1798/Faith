@@ -17,11 +17,35 @@ import Speech
 
 class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
     
+    var data : [String] = []
+    var loop : Int = 0
+    
+    @IBAction func happyTapped(_ sender: Any) {
+        mySpokenText = "happy"
+        happyOrSadView()
+        decide()
+        collectionTable.reloadData()
+    }
+    @IBAction func feelingSadTapped(_ sender: Any) {
+        mySpokenText = "sad"
+        happyOrSadView()
+        decide()
+        collectionTable.reloadData()
+    }
+    
+    func decide() {
+        loop = loop + 1
+        if loop == 3 {
+            loop = 0
+        }
+    }
+    @IBOutlet weak var feelingHappy: UIButton!
+    @IBOutlet weak var feelingSad: UIButton!
     var flag = 0
     var count = 0
     var change:CGFloat = 0.01
     var timer2:Timer?
-
+    
     
     @IBOutlet weak var collectionTable: UICollectionView!
     @IBOutlet weak var jack: UIButton!
@@ -43,7 +67,7 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         
         settings()
@@ -56,19 +80,25 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
     override public func viewDidAppear(_ animated: Bool) {
         speakfunc(self)
         speechKitManager?.requestSpeechRecognizerAuth({ authStatus in
-            self.collectionTable.setGradientBackground(colorOne: r1, colorTwo: r2)
-            OperationQueue.main.addOperation {
-                switch authStatus {
-                case .authorized:
-                    print("requestSpeechRecognizerAuth authorized")
-                case .denied:
-                    print("requestSpeechRecognizerAuth denied")
-                case .restricted:
-                    print("requestSpeechRecognizerAuth restricted")
-                case .notDetermined:
-                    print("requestSpeechRecognizerAuth notDetermined")
+            DispatchQueue.main.async {
+//                self.collectionTable.setGradientBackground(colorOne: r1, colorTwo: r2)
+                self.collectionTable.clipsToBounds = false
+                OperationQueue.main.addOperation {
+                    switch authStatus {
+                    case .authorized:
+                        print("requestSpeechRecognizerAuth authorized")
+                    case .denied:
+                        print("requestSpeechRecognizerAuth denied")
+                    case .restricted:
+                        print("requestSpeechRecognizerAuth restricted")
+                    case .notDetermined:
+                        print("requestSpeechRecognizerAuth notDetermined")
+                    }
                 }
             }
+            
+            self.toBespokenText = "Hello! I am Faith. I'm here to help."
+            self.speaker()
         })
     }
     
@@ -97,10 +127,15 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
             sendMessage()
             flag = 0
             timer2?.invalidate()
+            waveform.amplitude = 0.3
         }
         
         if count == 5 {
             self.collectionTable.alpha = 1
+            self.feelingSad.isUserInteractionEnabled = true
+            self.feelingHappy.isUserInteractionEnabled = true
+            self.feelingSad.alpha = 1
+            self.feelingHappy.alpha = 1
             happyOrSadView()
         }
     }
@@ -156,7 +191,7 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
                         self.speechSynthesizer.speak(speechUtterance)
                         let rest = Array(phrases.dropFirst())
                         self.speaker()
-
+                        
                     }
                 }
                 
@@ -169,13 +204,15 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
         })
         
         ApiAI.shared().enqueue(request)
-    
+        
     }
     
     func happyOrSadView(){
         
-        if mySpokenText.contains("happy") || mySpokenText.contains("joyful") || mySpokenText.contains("merry") || mySpokenText.contains("funny") || mySpokenText.contains("angry")
+        if mySpokenText.contains("happy") || mySpokenText.contains("joyful") || mySpokenText.contains("merry") || mySpokenText.contains("funny") || mySpokenText.contains("pleasant") || mySpokenText.contains("breezy") || mySpokenText.contains("feeling great")
         {
+            feelingHappy.isUserInteractionEnabled = false
+            feelingSad.isUserInteractionEnabled = false
             UIView.animate(withDuration: 1, animations: {
                 self.view.backgroundColor = UIColor.white
                 self.usernameLabel.textColor = UIColor.black
@@ -192,7 +229,7 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
             
             
         }
-        else if mySpokenText.contains("sad") || mySpokenText.contains("depressed") || mySpokenText.contains("low") || mySpokenText.contains("unhappy") || mySpokenText.contains("crying")
+        else if mySpokenText.contains("sad") || mySpokenText.contains("depressed") || mySpokenText.contains("low") || mySpokenText.contains("unhappy") || mySpokenText.contains("crying") || mySpokenText.contains("angry") || mySpokenText.contains("shit")
         {
             UIView.animate(withDuration: 1, animations: {
                 self.view.backgroundColor = UIColor.black
@@ -210,7 +247,7 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         
     }
-
+    
     
     func settings() {
         usernameLabel.text = "Hey \(username)"
@@ -226,7 +263,7 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
                                         RequestHandler.shared.getRestaurants(completion: { (stat4) in
                                             if stat4 {
                                                 DispatchQueue.main.async {
-                                                self.collectionTable.reloadData()
+                                                    self.collectionTable.reloadData()
                                                 }
                                             }
                                         })
@@ -244,7 +281,7 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func speakfunc(_: AnyObject){
         
         happyOrSadView()
-    
+        
     }
     
     func speaker() {
@@ -260,8 +297,8 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
         }
         
         let speechUtterance = AVSpeechUtterance(string: toBespokenText)
-        speechUtterance.rate = 0.45
-        speechUtterance.pitchMultiplier = 1.0
+        speechUtterance.rate = 0.47
+        speechUtterance.pitchMultiplier = 1.2
         speechUtterance.volume = 100
         speechSynthesizer.speak(speechUtterance)
         
@@ -291,27 +328,49 @@ extension BaseSpeechViewController : UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return music.count
+        if loop == 1 {
+            return places[0].mydata.count
+        }
+        
+        else if  loop == 2 {
+            return 2
+        }
+        else {
+            return music.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCollectionViewCell
-        
-        cell.setGradientBackground(colorOne: r1, colorTwo: r2)
+        if loop == 1 {
+            cell.songTitle.text = places[0].mydata[indexPath.row].name!
+            cell.songArtist.text = places[0].mydata[indexPath.row].address!
+        }
+        else if loop == 2 {
+            cell.songTitle.text = quotes.quote!
+            cell.songArtist.text = quotes.author!
+        }
+            
+        else {
+//        cell.setGradientBackground(colorOne: r1, colorTwo: r2)
         cell.songArtist.text = music[indexPath.row].mydata[indexPath.row].artist!
         cell.songTitle.text = music[indexPath.row].mydata[indexPath.row].title!
+        }
         
-        cell.cView.setGradientBackground(colorOne: r1, colorTwo: r2)
-        
+//        cell.cView.setGradientBackground(colorOne: r1, colorTwo: r2)
         return cell
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let url = music[indexPath.row].mydata[indexPath.row].preview!
-        play(url : url)
+        if loop == 0 {
+            let url = music[indexPath.row].mydata[indexPath.row].preview!
+            play(url : url)
+        }
     }
+    
     
     func play(url: String) {
         print("playing \(url)")

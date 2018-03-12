@@ -13,3 +13,5 @@ var musicURL = baseURL + "music/"
 var quoteURL = baseURL + "quotes/"
 var placesURL = baseURL + "/places/\(latitude)/\(longitude)/"
 var restaurantsURL = baseURL + "zomato/\(latitude)/\(longitude)"
+
+var youtubeURL = baseURL+"youtube/"

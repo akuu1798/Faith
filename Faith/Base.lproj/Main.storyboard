@@ -1334,7 +1334,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t6L-P5-pGn">
                                 <rect key="frame" x="37" y="295" width="300" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.049149729311466217" green="0.74918168783187866" blue="0.89050543308258057" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="bXT-Sf-EG0"/>
                                 </constraints>
@@ -1347,7 +1347,7 @@
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCell" id="PQf-Cd-tWl" customClass="CustomCollectionViewCell" customModule="Faith" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="5" width="299" height="90"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="299" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1356,27 +1356,27 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="299" height="90"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Etw-vS-fEm">
-                                                            <rect key="frame" x="0.0" y="9" width="299" height="72.5"/>
+                                                            <rect key="frame" x="0.0" y="16.5" width="299" height="58"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Music" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-kp-sd3">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="72.5" height="72.5"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-kp-sd3">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="72.5" height="58"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" secondItem="g0r-kp-sd3" secondAttribute="height" multiplier="1:1" id="H8q-4j-O6Z"/>
+                                                                        <constraint firstAttribute="width" secondItem="g0r-kp-sd3" secondAttribute="height" multiplier="5:4" id="H8q-4j-O6Z"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="N40-T3-C8G">
-                                                                    <rect key="frame" x="82.5" y="0.0" width="216.5" height="72.5"/>
+                                                                    <rect key="frame" x="82.5" y="0.0" width="216.5" height="58"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GiO-lO-3Oh">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="216.5" height="34"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="216.5" height="26.5"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="0.98290596200000002" blue="0.97216362639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT3-rH-9c0">
-                                                                            <rect key="frame" x="0.0" y="39" width="216.5" height="33.5"/>
+                                                                            <rect key="frame" x="0.0" y="31.5" width="216.5" height="26.5"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="17"/>
                                                                             <color key="textColor" red="1" green="0.98290596200000002" blue="0.97216362639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1388,6 +1388,7 @@
                                                                     </constraints>
                                                                 </stackView>
                                                             </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="N40-T3-C8G" firstAttribute="width" secondItem="Etw-vS-fEm" secondAttribute="width" multiplier="0.8" constant="-22.5" id="4tV-Z1-dwb"/>
                                                                 <constraint firstItem="N40-T3-C8G" firstAttribute="height" secondItem="g0r-kp-sd3" secondAttribute="height" id="SiA-Nm-zb2"/>
@@ -1422,15 +1423,35 @@
                                     <outlet property="delegate" destination="LNz-zg-GzV" id="Wse-YW-T4J"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKu-9c-btA">
+                                <rect key="frame" x="30" y="577" width="63" height="30"/>
+                                <state key="normal" title="Still Sad?">
+                                    <color key="titleColor" red="1" green="0.98290596200000002" blue="0.97216362639999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="feelingSadTapped:" destination="Xbb-wu-e1X" eventType="touchUpInside" id="IHc-Wa-7vZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCW-vC-eN2">
+                                <rect key="frame" x="239" y="577" width="106" height="30"/>
+                                <state key="normal" title="Feeling Happy?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="happyTapped:" destination="Xbb-wu-e1X" eventType="touchUpInside" id="boS-JF-vzd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4eO-gP-yPK" firstAttribute="centerX" secondItem="cjj-9J-KI7" secondAttribute="centerX" id="1Mh-G2-wJK"/>
                             <constraint firstItem="TrL-Za-N1N" firstAttribute="width" secondItem="PxW-U3-P4W" secondAttribute="width" multiplier="0.8" id="8zt-Zq-iqr"/>
+                            <constraint firstItem="yKu-9c-btA" firstAttribute="leading" secondItem="PxU-8A-DQD" secondAttribute="leading" constant="30" id="Cof-CD-rxz"/>
                             <constraint firstItem="cjj-9J-KI7" firstAttribute="width" secondItem="PxW-U3-P4W" secondAttribute="width" id="DFc-TY-9YH"/>
                             <constraint firstItem="Qcp-dy-Ml9" firstAttribute="width" secondItem="PxW-U3-P4W" secondAttribute="width" multiplier="0.25" id="FqD-4X-28U"/>
                             <constraint firstItem="t6L-P5-pGn" firstAttribute="centerX" secondItem="PxW-U3-P4W" secondAttribute="centerX" id="Ip6-HE-Tod"/>
                             <constraint firstItem="4eO-gP-yPK" firstAttribute="width" secondItem="PxW-U3-P4W" secondAttribute="width" multiplier="0.8" id="KXK-tG-JGS"/>
+                            <constraint firstItem="VCW-vC-eN2" firstAttribute="centerY" secondItem="KQN-4A-tCB" secondAttribute="centerY" id="MAR-lV-wU5"/>
                             <constraint firstItem="4eO-gP-yPK" firstAttribute="top" secondItem="cjj-9J-KI7" secondAttribute="bottom" constant="8" id="OF4-O1-h9L"/>
                             <constraint firstItem="cjj-9J-KI7" firstAttribute="centerX" secondItem="PxW-U3-P4W" secondAttribute="centerX" id="Uco-Hx-BY6"/>
                             <constraint firstItem="t6L-P5-pGn" firstAttribute="width" secondItem="PxW-U3-P4W" secondAttribute="width" multiplier="0.8" id="WHv-AT-KoR"/>
@@ -1438,12 +1459,14 @@
                             <constraint firstItem="Qcp-dy-Ml9" firstAttribute="centerX" secondItem="PxU-8A-DQD" secondAttribute="centerX" id="bzY-dR-QOe"/>
                             <constraint firstItem="KQN-4A-tCB" firstAttribute="centerX" secondItem="PxW-U3-P4W" secondAttribute="centerX" id="cHz-Vz-WEI"/>
                             <constraint firstAttribute="bottom" secondItem="KQN-4A-tCB" secondAttribute="bottom" constant="50" id="fKD-tD-uGc"/>
+                            <constraint firstItem="PxU-8A-DQD" firstAttribute="trailing" secondItem="VCW-vC-eN2" secondAttribute="trailing" constant="30" id="pXr-ia-SQz"/>
                             <constraint firstItem="4eO-gP-yPK" firstAttribute="top" secondItem="cjj-9J-KI7" secondAttribute="bottom" constant="8" id="psm-bH-BHq"/>
                             <constraint firstItem="Qcp-dy-Ml9" firstAttribute="width" secondItem="Qcp-dy-Ml9" secondAttribute="height" multiplier="1:1" id="rUH-3E-6QQ"/>
                             <constraint firstItem="Qcp-dy-Ml9" firstAttribute="top" secondItem="3Y0-eV-fZc" secondAttribute="bottom" constant="40" id="wd4-6b-Lyw"/>
                             <constraint firstItem="cjj-9J-KI7" firstAttribute="top" secondItem="t6L-P5-pGn" secondAttribute="bottom" constant="20" id="xnX-Y3-Z0S"/>
                             <constraint firstItem="t6L-P5-pGn" firstAttribute="top" secondItem="TrL-Za-N1N" secondAttribute="bottom" constant="15" id="ygX-Kj-ECD"/>
                             <constraint firstItem="TrL-Za-N1N" firstAttribute="top" secondItem="Qcp-dy-Ml9" secondAttribute="bottom" constant="40" id="zpk-cd-Pd4"/>
+                            <constraint firstItem="yKu-9c-btA" firstAttribute="centerY" secondItem="KQN-4A-tCB" secondAttribute="centerY" id="zyM-C2-sla"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PxU-8A-DQD"/>
                     </view>
@@ -1461,6 +1484,8 @@
                     <connections>
                         <outlet property="botAnswer" destination="6Qf-oN-des" id="dh3-xF-tac"/>
                         <outlet property="collectionTable" destination="t6L-P5-pGn" id="u8u-Ui-ee9"/>
+                        <outlet property="feelingHappy" destination="VCW-vC-eN2" id="cKd-fh-r6N"/>
+                        <outlet property="feelingSad" destination="yKu-9c-btA" id="tcm-be-Zb4"/>
                         <outlet property="jack" destination="KQN-4A-tCB" id="MGr-Aa-8RA"/>
                         <outlet property="logo" destination="Qcp-dy-Ml9" id="aob-7Q-BnH"/>
                         <outlet property="myAnswer" destination="4eO-gP-yPK" id="6ki-E7-Wab"/>
