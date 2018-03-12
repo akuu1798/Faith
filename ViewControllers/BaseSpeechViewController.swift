@@ -82,9 +82,12 @@ class BaseSpeechViewController: UIViewController, SFSpeechRecognizerDelegate {
     @IBAction func recordButtonTapped() {
         print(flag)
         if flag <= 1 {
+            
             if flag == 0 {
-                authorizeMicAccess()
+                
+                timer2 = Timer.scheduledTimer(timeInterval: 0.009, target: self, selector: #selector(ViewController.refreshAudioView(_:)), userInfo: nil, repeats: true)
             }
+            authorizeMicAccess()
             count = count + 1
             flag = flag + 1
             happyOrSadView()
